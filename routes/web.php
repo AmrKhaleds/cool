@@ -6,13 +6,11 @@ use App\Http\Controllers\Admin\NumberController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WhyChooseUsController;
-use App\Models\BannerSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
 
 Route::get('/change-lang/{lang}', function ($lang) {
     session(['locale' => $lang]);
