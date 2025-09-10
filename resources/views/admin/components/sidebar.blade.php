@@ -112,6 +112,28 @@
                 </ul>
             </li>
 
+            {{-- Reviews --}}
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="mdi:briefcase-outline" class="menu-icon"></iconify-icon>
+                    <span>Reviews</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.reviews.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Reviews List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.reviews.create') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Add Review
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             {{-- Users --}}
             <li class="dropdown">
                 <a href="javascript:void(0)">

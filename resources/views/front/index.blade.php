@@ -24,52 +24,52 @@
 
 
 
-<!-- start of whyChoose -->
-<section class="why" id="about">
-    <div class="container">
-        {{-- Banner Image --}}
-        <div class="why_banner" data-aos="fade-right">
-            <img src="{{ $whyChooseUs->getFirstMediaUrl('why_choose_us') ?: asset('front/media/serviceBanner.jpg') }}"
-                alt="serviceBanner" />
-        </div>
+    <!-- start of whyChoose -->
+    <section class="why" id="about">
+        <div class="container">
+            {{-- Banner Image --}}
+            <div class="why_banner" data-aos="fade-right">
+                <img src="{{ $whyChooseUs->getFirstMediaUrl('why_choose_us') ?: asset('front/media/serviceBanner.jpg') }}"
+                    alt="serviceBanner" />
+            </div>
 
-        <div class="why_details">
-            {{-- Intro --}}
-            <article class="why_intro" data-aos="fade-left" data-aos-delay="300">
-                <h1>{{ $whyChooseUs->getTranslation('title', app()->getLocale()) }}</h1>
-                <p>{{ $whyChooseUs->getTranslation('description', app()->getLocale()) }}</p>
-            </article>
-
-            {{-- Cards --}}
-            <div class="why_holder">
-                <article class="why_article" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('front/media/building.png') }}" alt="buildingImg" />
-                    <h3>{{ $whyChooseUs->getTranslation('card_title_1', app()->getLocale()) }}</h3>
-                    <p>{{ $whyChooseUs->getTranslation('card_description_1', app()->getLocale()) }}</p>
+            <div class="why_details">
+                {{-- Intro --}}
+                <article class="why_intro" data-aos="fade-left" data-aos-delay="300">
+                    <h1>{{ $whyChooseUs->getTranslation('title', app()->getLocale()) }}</h1>
+                    <p>{{ $whyChooseUs->getTranslation('description', app()->getLocale()) }}</p>
                 </article>
 
-                <article class="why_article" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('front/media/fan.png') }}" alt="buildingImg" />
-                    <h3>{{ $whyChooseUs->getTranslation('card_title_2', app()->getLocale()) }}</h3>
-                    <p>{{ $whyChooseUs->getTranslation('card_description_2', app()->getLocale()) }}</p>
-                </article>
+                {{-- Cards --}}
+                <div class="why_holder">
+                    <article class="why_article" data-aos="fade-up" data-aos-delay="300">
+                        <img src="{{ asset('front/media/building.png') }}" alt="buildingImg" />
+                        <h3>{{ $whyChooseUs->getTranslation('card_title_1', app()->getLocale()) }}</h3>
+                        <p>{{ $whyChooseUs->getTranslation('card_description_1', app()->getLocale()) }}</p>
+                    </article>
 
-                <article class="why_article" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('front/media/bucket.png') }}" alt="buildingImg" />
-                    <h3>{{ $whyChooseUs->getTranslation('card_title_3', app()->getLocale()) }}</h3>
-                    <p>{{ $whyChooseUs->getTranslation('card_description_3', app()->getLocale()) }}</p>
-                </article>
+                    <article class="why_article" data-aos="fade-up" data-aos-delay="400">
+                        <img src="{{ asset('front/media/fan.png') }}" alt="buildingImg" />
+                        <h3>{{ $whyChooseUs->getTranslation('card_title_2', app()->getLocale()) }}</h3>
+                        <p>{{ $whyChooseUs->getTranslation('card_description_2', app()->getLocale()) }}</p>
+                    </article>
 
-                <article class="why_article" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('front/media/gear.png') }}" alt="buildingImg" />
-                    <h3>{{ $whyChooseUs->getTranslation('card_title_4', app()->getLocale()) }}</h3>
-                    <p>{{ $whyChooseUs->getTranslation('card_description_4', app()->getLocale()) }}</p>
-                </article>
+                    <article class="why_article" data-aos="fade-up" data-aos-delay="500">
+                        <img src="{{ asset('front/media/bucket.png') }}" alt="buildingImg" />
+                        <h3>{{ $whyChooseUs->getTranslation('card_title_3', app()->getLocale()) }}</h3>
+                        <p>{{ $whyChooseUs->getTranslation('card_description_3', app()->getLocale()) }}</p>
+                    </article>
+
+                    <article class="why_article" data-aos="fade-up" data-aos-delay="600">
+                        <img src="{{ asset('front/media/gear.png') }}" alt="buildingImg" />
+                        <h3>{{ $whyChooseUs->getTranslation('card_title_4', app()->getLocale()) }}</h3>
+                        <p>{{ $whyChooseUs->getTranslation('card_description_4', app()->getLocale()) }}</p>
+                    </article>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- end of whyChoose -->
+    </section>
+    <!-- end of whyChoose -->
 
 
 
@@ -130,10 +130,10 @@
             </article>
             <!-- <img src=".media/Arrow 12.png" alt="arrowToRight" class="arrow" />
 
-                    <article>
-                        <div class="map_mask UAE"></div>
-                        <h3>United Arab Emirates</h3>
-                    </article> -->
+                            <article>
+                                <div class="map_mask UAE"></div>
+                                <h3>United Arab Emirates</h3>
+                            </article> -->
         </div>
     </section>
     <!-- end of countries -->
@@ -166,7 +166,34 @@
                 @lang('front.reviews_description')
             </p>
         </div>
-        <div class="marquee">
+        @foreach ($reviews->chunk(15) as $chunk)
+            <div class="marquee">
+                @foreach ($chunk as $review)
+                    <article class="client_review">
+                        <div class="client_rating">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $review->stars)
+                                    <i class="fa-solid fa-star colored_star"></i>
+                                @else
+                                    <i class="fa-solid fa-star gray_star"></i>
+                                @endif
+                            @endfor
+                        </div>
+                        <div class="client_feedback">
+                            {{ $review?->review }}
+                        </div>
+                        <div class="client_profile">
+                            <span class="client_face">
+                                <img src="{{ $review->getFirstMediaUrl('reviews') }}" alt="clientImg" />
+                            </span>
+                            <h3>{{ $review?->client }}</h3>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+        @endforeach
+
+        {{-- <div class="marquee">
             <article class="client_review">
                 <div class="client_rating">
                     <i class="fa-solid fa-star colored_star"></i>
@@ -486,328 +513,7 @@
                     <h3>Charlotte Harris</h3>
                 </div>
             </article>
-        </div>
-        <div class="marquee">
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    From the first consultation to the final touches, Refit delivered on
-                    every promise. Our home extension is exactly what we
-                    wanted—spacious, modern, and beautifully finished!
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-            <article class="client_review">
-                <div class="client_rating">
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star colored_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                    <i class="fa-solid fa-star gray_star"></i>
-                </div>
-                <div class="client_feedback">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-                    architecto ipsam accusamus tempora autem reiciendis temporibus,
-                    inventore, laboriosam aspernatur est tempore deserunt adipisci
-                    tenetur saepe enim. Facilis harum esse doloremque?
-                </div>
-                <div class="client_profile">
-                    <span class="client_face"><img src="{{ asset('front/media/client.jpeg') }}"
-                            alt="clientImg" /></span>
-                    <h3>Charlotte Harris</h3>
-                </div>
-            </article>
-        </div>
+        </div> --}}
     </section>
     <!-- end of clientFeedback -->
 
@@ -835,8 +541,8 @@
                 @csrf
                 <!-- Name -->
                 <div class="input_holder">
-                    <input type="text" name="name" id="name" placeholder="@lang('front.your_name')" autocomplete="name"
-                        inputmode="text" required value="{{ old('name') }}" />
+                    <input type="text" name="name" id="name" placeholder="@lang('front.your_name')"
+                        autocomplete="name" inputmode="text" required value="{{ old('name') }}" />
                     <label for="name">
                         <img src="{{ asset('front/media/user.png') }}" alt="userImg" />
                     </label>
@@ -844,8 +550,8 @@
 
                 <!-- Email -->
                 <div class="input_holder">
-                    <input type="email" name="email" id="email" placeholder="@lang('front.your_email')" autocomplete="email"
-                        inputmode="email" required value="{{ old('email') }}" />
+                    <input type="email" name="email" id="email" placeholder="@lang('front.your_email')"
+                        autocomplete="email" inputmode="email" required value="{{ old('email') }}" />
                     <label for="email">
                         <img src="{{ asset('front/media/email.png') }}" alt="emailImg" />
                     </label>
