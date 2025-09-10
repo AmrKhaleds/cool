@@ -26,7 +26,7 @@ class BannerSettingController extends Controller
             'link_title.en' => 'required|string|max:255',
             'link_title.ar' => 'required|string|max:255',
             'link' => 'required|url',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable',
         ]);
 
         $banner = BannerSetting::firstOrCreate([]);
