@@ -30,7 +30,7 @@ class ServiceController extends Controller
             'keywords.en' => 'required|string|max:255',
             'keywords.ar' => 'required|string|max:255',
             'discount' => 'nullable|numeric|min:0',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image',
         ]);
 
         // ✅ Create service
@@ -70,7 +70,7 @@ class ServiceController extends Controller
             'keywords.en' => 'required|string|max:255',
             'keywords.ar' => 'required|string|max:255',
             'discount' => 'nullable|numeric|min:0',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image' => 'nullable|image',
         ]);
 
         // ✅ Update translations
