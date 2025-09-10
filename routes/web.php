@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerSettingController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\NumberController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
