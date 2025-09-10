@@ -31,7 +31,7 @@ Route::group(['as' => 'front.'], function () {
 
 // Admin Routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     // Users Routes
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
