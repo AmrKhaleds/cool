@@ -3,12 +3,25 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\BannerSetting;
+use App\Models\Number;
+use App\Models\Service;
+use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function __invoke()
     {
-        
+        $services = Service::all();
+        $banner = BannerSetting::first();
+        $whyChooseUs = WhyChooseUs::first();
+        $numbers = Number::all();
+        return view('front.index', compact('services', 'banner', 'whyChooseUs', 'numbers'));
     }
 }

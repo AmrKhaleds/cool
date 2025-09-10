@@ -2,16 +2,25 @@
 
 use App\Http\Controllers\Admin\BannerSettingController;
 use App\Http\Controllers\Admin\BookingController;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\NumberController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WhyChooseUsController;
 use App\Models\BannerSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+
+Route::get('/change-lang/{lang}', function ($lang) {
+    session(['locale' => $lang]);
+    app()->setLocale($lang);
+    return back();
+})->name('lang.switch');
+
 
 // Front Routes
-
 Route::group(['as' => 'front.'], function () {
     Route::get('/', HomeController::class)->name('index');
 
@@ -35,15 +44,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     // Services
     Route::resource('services', ServiceController::class);
 
+    Route::resource('numbers', NumberController::class);
+
     // Bookings
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
     Route::delete('bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
 
     // Edit banner
     Route::get('banners', [BannerSettingController::class, 'edit'])->name('banners.edit');
-
-    // Update banner
     Route::put('banners', [BannerSettingController::class, 'update'])->name('banners.update');
+
+    // Why Choose Us
+    Route::get('why-choose-us', [WhyChooseUsController::class, 'edit'])->name('why-choose-us.edit');
+    Route::put('why-choose-us/update', [WhyChooseUsController::class, 'update'])->name('why-choose-us.update');
+
 
     // Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');

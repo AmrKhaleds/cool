@@ -11,58 +11,108 @@
     </div>
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
-            <li class="">
+
+            {{-- Dashboard --}}
+            <li>
                 <a href="{{ route('admin.index') }}">
                     <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
                     <span>Dashboard</span>
                 </a>
-
             </li>
 
-
+            {{-- Services --}}
             <li class="dropdown">
                 <a href="javascript:void(0)">
-                    <i class="ri-checkbox-multiple-blank-line text-xl me-14 d-flex w-auto"></i>
+                    <iconify-icon icon="mdi:briefcase-outline" class="menu-icon"></iconify-icon>
                     <span>Services</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('admin.services.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Services List</a>
+                        <a href="{{ route('admin.services.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Services List
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.services.create') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Add Service</a>
+                        <a href="{{ route('admin.services.create') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Add Service
+                        </a>
                     </li>
                 </ul>
             </li>
 
-             <li class="dropdown">
+            {{-- Bookings --}}
+            <li class="dropdown">
                 <a href="javascript:void(0)">
-                    <i class="ri-checkbox-multiple-blank-line text-xl me-14 d-flex w-auto"></i>
+                    <iconify-icon icon="mdi:calendar-check-outline" class="menu-icon"></iconify-icon>
                     <span>Bookings</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('admin.bookings.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Bookings List</a>
+                        <a href="{{ route('admin.bookings.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Bookings List
+                        </a>
                     </li>
                 </ul>
             </li>
 
+            {{-- Banner Settings --}}
             <li class="dropdown">
                 <a href="javascript:void(0)">
-                    <i class="ri-checkbox-multiple-blank-line text-xl me-14 d-flex w-auto"></i>
+                    <iconify-icon icon="mdi:image-outline" class="menu-icon"></iconify-icon>
                     <span>Banner Settings</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('admin.banners.edit') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Edit Banner Settings</a>
+                        <a href="{{ route('admin.banners.edit') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Edit Banner Settings
+                        </a>
                     </li>
                 </ul>
             </li>
 
+            {{-- Why Choose Us Settings --}}
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="mdi:star-outline" class="menu-icon"></iconify-icon>
+                    <span>Why Choose Us Settings</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.why-choose-us.edit') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Edit Why Choose Us Settings
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- Numbers --}}
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="mdi:briefcase-outline" class="menu-icon"></iconify-icon>
+                    <span>Numbers Settings</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.numbers.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Numbers List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.numbers.create') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Add Number
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- Users --}}
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
@@ -70,16 +120,21 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('admin.users.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Users List</a>
+                        <a href="{{ route('admin.users.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Users List
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.users.create') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Add User</a>
+                        <a href="{{ route('admin.users.create') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Add User
+                        </a>
                     </li>
                 </ul>
             </li>
 
+            {{-- Settings --}}
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
@@ -87,11 +142,14 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('admin.settings.index') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> General Settings</a>
+                        <a href="{{ route('admin.settings.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            General Settings
+                        </a>
                     </li>
                 </ul>
             </li>
+
         </ul>
     </div>
 </aside>

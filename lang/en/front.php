@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'home' => 'Home',
+    'our_services' => 'Our Services',
+    'testimonials' => 'Testimonials',
+    'book_a_Service' => 'Book a Service',
+    'english' => 'English',
+    'arabic' => 'Arabic',
+    'discover_our_services' => 'Discover Expert HVAC Services Today',
+    'book_now' => 'Book Now',
+    'countries_we_operate_in' => 'Countries We Operate In',
+    'providing_trusted_services' => 'Providing Trusted Services',
+    'united_states' => 'United States',
+    'saudi_arabia' => 'Saudi Arabia',
+    'hear_from_our_clients' => 'Hear From Our Clients',
+    'reviews_description' => 'Hear from our happy clients about their experience working with Refit and the quality of our craftsmanship.',
+    'book_a_service' => 'Book a Service',
+    'book_description' => 'Schedule your service in just a few clicks – fast, easy, and reliable.',
+    'your_name' => 'Your Name',
+    'your_email' => 'Your Email',
+    'types_of_services' => 'Types of Services',
+    'location' => 'Location',
+    'additional_details' => 'Additional Details',
+];

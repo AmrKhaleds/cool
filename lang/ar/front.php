@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'home' => 'الرئيسية',
+    'our_services' => 'خدماتنا',
+    'testimonials' => ' آراء العملاء',
+    'book_a_Service' => 'احجز خدمة',
+    'english' => 'الإنجليزية',
+    'arabic' => 'العربية',
+    'discover_our_services' => 'اكتشف خدمات التكييف الاحترافية اليوم',
+    'book_now' => 'احجز الان',
+    'countries_we_operate_in' => 'الدول التي نعمل بها',
+    'providing_trusted_services' => 'نقدّم خدمات موثوقة',
+    'united_states' => 'الولايات المتحدة',
+    'saudi_arabia' => 'السعودية',
+    'hear_from_our_clients' => 'آراء عملائنا',
+    'reviews_description' => 'استمع إلى تجارب عملائنا السعداء مع Refit وجودة خدماتنا وحرفيتنا العالية.',
+    'book_a_service' => 'احجز خدمة',
+    'book_description' => 'احجز خدمتك في بضع نقرات فقط – بسرعة، بسهولة، وبموثوقية.',
+    'your_name' => 'اسمك',
+    'your_email' => 'بريدك الالكتروني',
+    'types_of_services' => 'نوع الخدمات',
+    'location' => 'الموقع',
+    'additional_details' => 'تفاصيل اضافية',
+];
