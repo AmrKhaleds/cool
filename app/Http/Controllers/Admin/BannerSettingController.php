@@ -27,6 +27,9 @@ class BannerSettingController extends Controller
             'link_title.ar' => 'required|string|max:255',
             'link' => 'required|url',
             'image' => 'nullable',
+            'review.en' => 'required|string',
+            'review.ar' => 'required|string',
+            'stars' => 'nullable|integer|min:0|max:5',
         ]);
 
         $banner = BannerSetting::firstOrCreate([]);
@@ -35,8 +38,11 @@ class BannerSettingController extends Controller
         $banner->setTranslations('title', $validated['title']);
         $banner->setTranslations('description', $validated['description']);
         $banner->setTranslations('link_title', $validated['link_title']);
+        $banner->setTranslations('review', $validated['review']);
+
 
         // Update other fields
+        $banner->link = $validated['stars'];
         $banner->link = $validated['link'];
         $banner->save();
 

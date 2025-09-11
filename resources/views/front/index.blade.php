@@ -3,7 +3,19 @@
 @section('content')
     <!-- start of hero -->
     <section class="header" id="home">
-        <span class="mask"></span>
+        <!-- feedback floating div -->
+        <article class="floating_feedback">
+            <span>
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($i <= $banner->stars)
+                        <i class="fa-solid fa-star colored_star"></i>
+                    @else
+                        <i class="fa-solid fa-star gray_star"></i>
+                    @endif
+                @endfor
+            </span>
+            <p>{{ $banner?->review }}</p>
+        </article>
         <span class="hero_overlay">
             <img src="{{ $banner?->getFirstMediaUrl('banners') ?: asset('front/media/heroImg.png') }}" alt="heroImg" />
         </span>
@@ -22,10 +34,11 @@
     </section>
     <!-- end of hero -->
 
-
-
     <!-- start of whyChoose -->
     <section class="why" id="about">
+        <div class="intro" data-aos="fade-up">
+            <div class="special_intro">@lang('front.about_us')</div>
+        </div>
         <div class="container">
             {{-- Banner Image --}}
             <div class="why_banner" data-aos="fade-right">
@@ -71,12 +84,12 @@
     </section>
     <!-- end of whyChoose -->
 
-
-
     <!-- start of services -->
     <section class="services" id="service">
         <div class="intro" data-aos="fade-up">
-            @lang('front.discover_our_services')
+            <div class="special_intro">@lang('front.services')</div>
+            @lang('front.what_we_do')
+            <p>@lang('front.find_out_what_we_do')</p>
         </div>
         <div class="container">
             @foreach ($services as $service)
@@ -107,39 +120,6 @@
     </section>
     <!-- end of services -->
 
-
-
-
-    <!-- start of countries -->
-    <section class="areas" id="countries">
-        <span class="areas_overlay"></span>
-        <span class="mask"></span>
-        <div class="intro" data-aos="fade-up">
-            @lang('front.countries_we_operate_in')
-            <span>@lang('front.providing_trusted_services')</span>
-        </div>
-        <div class="areas_maps" data-aos="fade-up">
-            <article>
-                <div class="map_mask USA"></div>
-                <h3>@lang('front.united_states')</h3>
-            </article>
-            <img src="{{ asset('front/media/Arrow 13.png') }}" alt="arrowToRight" class="arrow" />
-            <article>
-                <div class="map_mask SAUDI"></div>
-                <h3>@lang('front.saudi_arabia')</h3>
-            </article>
-            <!-- <img src=".media/Arrow 12.png" alt="arrowToRight" class="arrow" />
-
-                            <article>
-                                <div class="map_mask UAE"></div>
-                                <h3>United Arab Emirates</h3>
-                            </article> -->
-        </div>
-    </section>
-    <!-- end of countries -->
-
-
-
     <!-- start of statistics -->
     <section class="experience">
         <div class="container">
@@ -158,12 +138,42 @@
     </section>
     <!-- end of statistics -->
 
+    <!-- start of countries -->
+    <section class="areas" id="countries">
+        <span class="areas_overlay"></span>
+        <span class="mask"></span>
+        <div class="intro" data-aos="fade-up">
+            <div class="special_intro">@lang('front.countries')</div>
+            @lang('front.countries_we_operate_in')
+            <span>@lang('front.providing_trusted_services')</span>
+        </div>
+        <div class="areas_maps" data-aos="fade-up">
+            <article>
+                <div class="map_mask USA"></div>
+                <h3>@lang('front.united_states')</h3>
+            </article>
+            <img src="{{ asset('front/media/Arrow 13.png') }}" alt="arrowToRight" class="arrow" />
+            <article>
+                <div class="map_mask SAUDI"></div>
+                <h3>@lang('front.saudi_arabia')</h3>
+            </article>
+            <!-- <img src=".media/Arrow 12.png" alt="arrowToRight" class="arrow" />
+
+                                                                <article>
+                                                                    <div class="map_mask UAE"></div>
+                                                                    <h3>United Arab Emirates</h3>
+                                                                </article> -->
+        </div>
+    </section>
+    <!-- end of countries -->
+
     <!-- start of clientFeedback -->
     <section class="feedback" id="feedback">
         <div class="intro" data-aos="fade-up">
-            <h4>@lang('front.hear_from_our_clients')</h4>
+            <div class="special_intro">@lang('front.testimonials')</div>
+            <h4>@lang('front.hear_from_out_clients')</h4>
             <p>
-                @lang('front.reviews_description')
+                @lang('front.hear_from_description')
             </p>
         </div>
         @foreach ($reviews->chunk(15) as $chunk)
@@ -517,14 +527,43 @@
     </section>
     <!-- end of clientFeedback -->
 
+    <!-- start of commen questions -->
+    <section class="answer_question">
+        <div class="container">
+
+            <div class="intro" data-aos="fade-up">
+                <div class="special_intro">@lang('front.faqs')</div>
+                <h4>@lang('front.answering_your_questions')</h4>
+                <p>
+                    @lang('front.get_more_questions')
+                </p>
+                <button type="button" class="btn">@lang('front.get_in_touch')<span class="button_icon"><i
+                            class="fa-solid fa-arrow-right"></i></span></button>
+            </div>
+
+            <article class="questions" data-aos="fade-up" data-aos-delay="200">
+                @foreach ($faqs as $faq)
+                    <div class="question_tag ">
+                        <span class="question_opener"><i class="fa-solid fa-plus"></i></span>
+                        <h3>{{ $faq->question }}</h3>
+                        <p>{{ $faq->answer }}</p>
+                    </div>
+                @endforeach
+            </article>
+        </div>
+    </section>
+    <!-- end of commen questions -->
+
     <!-- start of bookService -->
-    <section class="who_we" id="bookService">
+    <section class="book_service" id="bookService">
         <div class="intro" data-aos="fade-up">
+            <div class="special_intro">@lang('front.booking')</div>
             <h4>@lang('front.book_a_Service')</h4>
             <p>
-                @lang('front.book_description')
+                @lang('front.schedule_service')
             </p>
         </div>
+
         <div class="container">
             {{-- Handel Erros --}}
             @if ($errors->any())
@@ -591,10 +630,9 @@
 
                 <!-- Date -->
                 <div class="input_holder">
-                    <input type="date" name="date" id="date" autocomplete="off" inputmode="numeric" />
+                    <input type="text" name="date" placeholder="@lang('front.selet_a_date')" id="date" />
                     <label for="date">
-                        <img src="{{ asset('front/media/calendar.png') }}" alt="calenderImg"
-                            value="{{ old('date') }}" />
+                        <img src="{{ asset('front/media/calendar.png') }}" alt="calenderImg" />
                     </label>
                 </div>
 

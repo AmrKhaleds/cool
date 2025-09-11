@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\BannerSetting;
+use App\Models\Faq;
 use App\Models\Number;
 use App\Models\Review;
 use App\Models\Service;
@@ -24,6 +25,7 @@ class HomeController extends Controller
         $whyChooseUs = WhyChooseUs::first();
         $numbers = Number::all();
         $reviews = Review::all();
-        return view('front.index', compact('services', 'banner', 'whyChooseUs', 'numbers', 'reviews'));
+        $faqs = Faq::all();
+        return view('front.index', compact('services', 'banner', 'whyChooseUs', 'numbers', 'reviews', 'faqs'));
     }
 }

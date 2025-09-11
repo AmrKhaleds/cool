@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\NumberController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -48,6 +49,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 
     // Reviews
     Route::resource('reviews', ReviewController::class);
+
+    // Reviews
+    Route::resource('faqs', FaqController::class);
 
     // Bookings
     Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');

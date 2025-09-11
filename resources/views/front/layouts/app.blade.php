@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <link rel="stylesheet" href="{{ asset('front/css/reset.css') }}" />
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}" />
 
@@ -81,11 +83,24 @@
 <script src="{{ asset('front/js/script.js') }}" defer></script>
 
 <!-- 4. Init AOS after everything -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-    AOS.init({
-        duration: 1000,
-        once: false,
-    });
+  flatpickr("#date", {
+    dateFormat: "Y-m-d"
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  flatpickr("#date", {
+    dateFormat: "Y-m-d"
+  });
+</script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: false,
+  });
 </script>
 
 </html>

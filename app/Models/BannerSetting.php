@@ -13,5 +13,5 @@ class BannerSetting extends Model implements HasMedia
 
     protected $table = 'banner_settings';
 
-    public $translatable = ['title', 'description', 'link_title'];
+    public $translatable = ['title', 'description', 'link_title', 'review'];
 }

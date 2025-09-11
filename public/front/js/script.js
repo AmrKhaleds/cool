@@ -74,28 +74,6 @@ const observer = new IntersectionObserver(
 counters.forEach((el) => observer.observe(el));
 counters.forEach((counter) => observer.observe(counter));
 
-const selectService = document.querySelector("#select_service");
-const options = document.querySelector("#options");
-const optionsList = document.querySelectorAll("#options span");
-// const inputField = selectService.querySelector("input");
-
-// selectService.addEventListener("click", (e) => {
-//   e.stopPropagation();
-//   options.classList.toggle("hide_lang_changer");
-// });
-
-// optionsList.forEach((option) => {
-//   option.addEventListener("click", (e) => {
-//     e.stopPropagation();
-//     inputField.value = option.textContent;
-//     options.classList.add("hide_lang_changer");
-//   });
-// });
-
-// document.addEventListener("click", () => {
-//   options.classList.add("hide_lang_changer");
-// });
-
 const menu = document.querySelector("#menu");
 const dropdown = document.querySelector("#navigation_dropdown");
 
@@ -120,7 +98,10 @@ const navLinks = document.querySelectorAll(
 navLinks.forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
-
+    dropdown.style.overflow = "hidden";
+    setTimeout(() => {
+      dropdown.classList.remove("show_dropdown");
+    }, 100);
     const targetId = link.getAttribute("href").replace("#", "");
     const targetEl = document.getElementById(targetId);
 
@@ -157,3 +138,49 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+const questions = document.querySelectorAll(".question_tag");
+questions.forEach((question) => {
+  question.addEventListener("click", () => {
+    if (question.classList.contains("opened")) {
+      question.classList.remove("opened");
+    } else {
+      questions.forEach((question) => question.classList.remove("opened"));
+      question.classList.add("opened");
+    }
+  });
+});
+
+// const form = document.querySelector(".floating_fieldset");
+// form.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   const formData = {
+//     name: document.getElementById("name").value,
+//     email: document.getElementById("email").value,
+//     service: document.getElementById("select_service").value,
+//     location: document.getElementById("location").value,
+//     date: document.getElementById("date").value,
+//     details: document.getElementById("details").value,
+//   };
+
+//   try {
+//     const res = await fetch("api", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(formData),
+//     });
+//     const result = await res.json();
+
+//     if (res.ok) {
+//       alert("successful!");
+//     } else {
+//       alert("failed!");
+//     }
+//   } catch {
+//     console.error("Error:", error);
+//     alert("Failed to connect to server.");
+//   }
+// });

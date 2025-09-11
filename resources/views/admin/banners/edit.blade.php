@@ -130,8 +130,8 @@
                                             Link Url <span class="text-danger-600">*</span>
                                         </label>
                                         <input type="text"
-                                            class="form-control radius-8 @error('link') is-invalid @enderror"
-                                            id="link_url" placeholder="Enter Link Url" name="link"
+                                            class="form-control radius-8 @error('link') is-invalid @enderror" id="link_url"
+                                            placeholder="Enter Link Url" name="link"
                                             value="{{ old('link', $banner->link) }}">
                                         @error('link')
                                             <small class="text-danger">{{ $message }}</small>
@@ -153,10 +153,9 @@
                                                                 class="text-xl text-danger-600"></iconify-icon>
                                                         </button>
 
-                                                            <img id="uploaded-img__preview"
-                                                                class="w-100 h-100 object-fit-cover"
-                                                                src="{{ $banner->getFirstMediaUrl('banners') ?: asset('assets/images/user.png') }}"
-                                                                alt="image">
+                                                        <img id="uploaded-img__preview" class="w-100 h-100 object-fit-cover"
+                                                            src="{{ $banner->getFirstMediaUrl('banners') ?: asset('assets/images/user.png') }}"
+                                                            alt="image">
 
                                                     </div>
 
@@ -173,6 +172,48 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    {{-- Review --}}
+                                    <div class="col-md-6 mb-20">
+                                        <label for="review"
+                                            class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                            Review [En] <span class="text-danger-600">*</span>
+                                        </label>
+                                        <textarea class="form-control radius-8 @error('review.en') is-invalid @enderror" id="review"
+                                            placeholder="Enter Review" name="review[en]">{{ old('review.en', $banner->getTranslation('review', 'en')) }}</textarea>
+                                        @error('review.en')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
+                                    {{-- Review --}}
+                                    <div class="col-md-6 mb-20">
+                                        <label for="review_ar"
+                                            class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                            Review [Ar] <span class="text-danger-600">*</span>
+                                        </label>
+                                        <textarea class="form-control radius-8 @error('review.ar') is-invalid @enderror" id="review_ar"
+                                            placeholder="Enter Review" name="review[ar]">{{ old('review.ar', $banner->getTranslation('review', 'ar')) }}</textarea>
+                                        @error('review.ar')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
+                                    {{-- stars --}}
+                                    <div class="col-md-6 mb-20">
+                                        <label for="stars"
+                                            class="form-label fw-semibold text-primary-light text-sm mb-8">
+                                            Stars <span class="text-danger-600">*</span>
+                                        </label>
+                                        <input type="number" min="0" max="5" step="1"
+                                            class="form-control radius-8 @error('stars') is-invalid @enderror"
+                                            id="stars" placeholder="Enter Stars" name="stars"
+                                            value="{{ old('stars') }}">
+                                        @error('stars')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+
 
                                     {{-- Buttons --}}
                                     <div class="d-flex align-items-center justify-content-center gap-3">

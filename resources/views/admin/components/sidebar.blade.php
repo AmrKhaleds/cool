@@ -134,6 +134,28 @@
                 </ul>
             </li>
 
+            {{-- Faqs --}}
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="mdi:briefcase-outline" class="menu-icon"></iconify-icon>
+                    <span>Faqs</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.faqs.index') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Faqs List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.faqs.create') }}">
+                            <iconify-icon icon="ri:circle-fill" class="circle-icon text-primary-600"></iconify-icon>
+                            Add Faq
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             {{-- Users --}}
             <li class="dropdown">
                 <a href="javascript:void(0)">
