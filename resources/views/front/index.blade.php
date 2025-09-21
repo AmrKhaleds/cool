@@ -4,7 +4,7 @@
     <!-- start of hero -->
     <section class="header" id="home">
         <!-- feedback floating div -->
-        <article class="floating_feedback">
+        <article class="floating_feedback" data-aos="fade-up" data-aos-delay="650">
             <span>
                 @for ($i = 1; $i <= 5; $i++)
                     @if ($i <= $banner->stars)
@@ -20,7 +20,7 @@
             <img src="{{ $banner?->getFirstMediaUrl('banners') ?: asset('front/media/heroImg.png') }}" alt="heroImg" />
         </span>
         <div class="container">
-            <article class="hero_intro" data-aos="zoom-in" data-aos-delay="300">
+            <article class="hero_intro" >
                 <div class="hero_intro">
                     <h1>{{ $banner?->title ?? 'Default Title' }}</h1>
                     <h3>{{ $banner?->description ?? 'Default Description' }}</h3>

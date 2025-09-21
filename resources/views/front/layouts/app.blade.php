@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <link rel="stylesheet" href="{{ asset('front/css/reset.css') }}" />
     <link rel="stylesheet" href="{{ asset('front/css/style.css') }}" />
@@ -80,27 +80,60 @@
 </script>
 <!-- 3. Your own scripts (that depend on libs being loaded) -->
 <script src="{{ asset('front/js/swiper.js') }}"></script>
+<script>
+    const preloadImages = (srcs) => {
+        srcs.forEach((src) => {
+            const img = new Image();
+            img.src = src;
+        });
+    };
+
+    preloadImages(["{{ asset('front/media/coloredLogo.png') }}", "{{ asset('front/media/coloredLogoWhite.png') }}"]);
+    const nav = document.querySelector("#navbar");
+    const navContainer = document.querySelector("#nav_container");
+    const langChanger = document.querySelector("#lang_changer");
+    const langChangerList = document.querySelectorAll("#lang_changer span");
+    const navLogo = document.querySelector("#navbar .logo");
+    const lang = document.querySelector("#lang");
+    const activeLang = document.querySelector("#active_lang");
+
+    // Scroll effect
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 125) {
+            navLogo.src = "{{ asset('front/media/coloredLogo.png') }}";
+            setTimeout(() => {
+                nav.classList.add("floating_nav");
+                navContainer.style.padding = "10px 1rem";
+            }, 200);
+        } else {
+            nav.classList.remove("floating_nav");
+            navContainer.style.padding = "8px 1rem";
+            navLogo.src = "{{ asset('front/media/coloredLogoWhite.png') }}";
+        }
+    });
+</script>
 <script src="{{ asset('front/js/script.js') }}" defer></script>
 
 <!-- 4. Init AOS after everything -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-  flatpickr("#date", {
-    dateFormat: "Y-m-d"
-  });
+    flatpickr("#date", {
+        dateFormat: "Y-m-d"
+    });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-  flatpickr("#date", {
-    dateFormat: "Y-m-d"
-  });
+    flatpickr("#date", {
+        dateFormat: "Y-m-d"
+    });
 </script>
 <script>
-  AOS.init({
-    duration: 1000,
-    once: false,
-  });
+    AOS.init({
+        duration: 1000,
+        once: false,
+    });
 </script>
 
 </html>

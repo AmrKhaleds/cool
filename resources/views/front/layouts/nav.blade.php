@@ -1,7 +1,7 @@
 <!-- start of nav -->
 <nav id="navbar" data-aos="fade-down">
     <div class="container" id="nav_container">
-        <img src="{{ asset('storage/' . $settings->site_logo) }}" alt="logo" class="logo" />
+        <img src="{{ asset('front/media/coloredLogoWhite.png') }}" alt="logo" class="logo" />
         <ul>
             <span class="main_Links">
                 <li class="active navLink" href="#home">

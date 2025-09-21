@@ -1,21 +1,6 @@
-const nav = document.querySelector("#navbar");
-const navContainer = document.querySelector("#nav_container");
-const langChanger = document.querySelector("#lang_changer");
-const langChangerList = document.querySelectorAll("#lang_changer span");
 
-const lang = document.querySelector("#lang");
-const activeLang = document.querySelector("#active_lang");
 
-// Scroll effect
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 125) {
-    nav.classList.add("floating_nav");
-    navContainer.style.padding = "10px 1rem";
-  } else {
-    nav.classList.remove("floating_nav");
-    navContainer.style.padding = "8px 1rem";
-  }
-});
+
 
 lang.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -87,7 +72,7 @@ menu.addEventListener("click", () => {
     dropdown.classList.add("show_dropdown");
     setTimeout(() => {
       dropdown.style.overflow = "visible";
-    }, 400);
+    }, 300);
   }
 });
 const sections = document.querySelectorAll("section");
@@ -151,36 +136,40 @@ questions.forEach((question) => {
   });
 });
 
-// const form = document.querySelector(".floating_fieldset");
-// form.addEventListener("submit", async (e) => {
-//   e.preventDefault();
+const marqueeSlides = document.querySelectorAll(".marquee article");
+const marquee = document.querySelector(".marquee");
+marquee.style.setProperty(
+  "--marquee_timer",
+  `${Math.min(marqueeSlides.length * 10, 130)}s`
+);
+marqueeSlides.forEach((slide, index) => {
+  slide.style.animationDelay = `calc(var(--marquee_timer) / ${marqueeSlides.length} * -${index})`;
+  slide.style.transform = `translateX(max(calc(400px * ${marqueeSlides.length}), 100%))`;
+});
 
-//   const formData = {
-//     name: document.getElementById("name").value,
-//     email: document.getElementById("email").value,
-//     service: document.getElementById("select_service").value,
-//     location: document.getElementById("location").value,
-//     date: document.getElementById("date").value,
-//     details: document.getElementById("details").value,
-//   };
+const heroHeader = document.querySelector(".hero_intro h1");
+const text = heroHeader.textContent.trim();
+heroHeader.textContent = ""; // clear
 
-//   try {
-//     const res = await fetch("api", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(formData),
-//     });
-//     const result = await res.json();
+const words = text.split(" ");
 
-//     if (res.ok) {
-//       alert("successful!");
-//     } else {
-//       alert("failed!");
-//     }
-//   } catch {
-//     console.error("Error:", error);
-//     alert("Failed to connect to server.");
-//   }
-// });
+words.forEach((word, wIndex) => {
+  const wordSpan = document.createElement("span");
+  wordSpan.className = "word";
+  wordSpan.style.whiteSpace = "nowrap"; // keep whole word together
+
+  Array.from(word).forEach((char, i) => {
+    const span = document.createElement("span");
+    span.className = "letter";
+    span.textContent = char;
+    span.style.animationDelay = `${(wIndex * word.length + i) * 0.08}s`;
+    wordSpan.appendChild(span);
+  });
+
+  heroHeader.appendChild(wordSpan);
+
+  // add space only if not the last word
+  if (wIndex < words.length - 1) {
+    heroHeader.appendChild(document.createTextNode(" "));
+  }
+});
