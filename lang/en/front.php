@@ -25,7 +25,7 @@ return [
     'about_us' => 'About Us',
     'services' => 'Services',
     'what_we_do' => 'What We Do',
-    'find_out_what_we_do' => 'Find out which one of our services fit the needs of your project',
+    'find_out_what_we_do' => 'Find out which service fits the needs of your project',
     'countries' => 'Countries',
     'countries_we_operate_in' => 'Countries we operate in',
     'providing_trusted_services' => 'Providing trusted services',

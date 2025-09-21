@@ -25,7 +25,7 @@ return [
     'about_us' => 'من نحن',
     'services' => 'خدماتنا',
     'what_we_do' => 'ماذا نقدم',
-    'find_out_what_we_do' => 'اكتشف أي من خدماتنا تناسب احتياجات مشروعك',
+    'find_out_what_we_do' => 'اكتشف الخدمة التي تناسب احتياجات مشروعك',
     'countries' => 'الدول',
     'countries_we_operate_in' => 'الدول التي نعمل بها',
     'providing_trusted_services' => 'نقدّم خدمات موثوقة',
