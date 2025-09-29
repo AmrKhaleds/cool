@@ -1,6 +1,35 @@
+const preloadImages = (srcs) => {
+  srcs.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
 
+preloadImages(["../media/coloredLogo.png", "../media/coloredLogoWhite.png"]);
 
+const nav = document.querySelector("#navbar");
+const navContainer = document.querySelector("#nav_container");
+const langChanger = document.querySelector("#lang_changer");
+const langChangerList = document.querySelectorAll("#lang_changer span");
+const navLogo = document.querySelector("#navbar .logo");
+const lang = document.querySelector("#lang");
+const activeLang = document.querySelector("#active_lang");
 
+// Scroll effect
+
+// window.addEventListener("scroll", () => {
+//   if (window.scrollY > 125) {
+//     navLogo.src = "../media/coloredLogo.png";
+//     setTimeout(() => {
+//       nav.classList.add("floating_nav");
+//       navContainer.style.padding = "10px 1rem";
+//     }, 200);
+//   } else {
+//     nav.classList.remove("floating_nav");
+//     navContainer.style.padding = "8px 1rem";
+//     navLogo.src = "../media/coloredLogoWhite.png";
+//   }
+// });
 
 lang.addEventListener("click", (e) => {
   e.stopPropagation();
@@ -150,25 +179,33 @@ marqueeSlides.forEach((slide, index) => {
 const heroHeader = document.querySelector(".hero_intro h1");
 const text = heroHeader.textContent.trim();
 heroHeader.textContent = ""; // clear
-
 const words = text.split(" ");
+let globalIndex = 0; // keep track of characters across all words
 
 words.forEach((word, wIndex) => {
   const wordSpan = document.createElement("span");
-  wordSpan.className = "word";
-  wordSpan.style.whiteSpace = "nowrap"; // keep whole word together
+  if (wIndex === word.length - 1) {
+    wordSpan.className = "word LLC";
+  } else {
+    wordSpan.className = "word";
+  }
 
-  Array.from(word).forEach((char, i) => {
+  wordSpan.style.whiteSpace = "nowrap";
+
+  Array.from(word).forEach((char) => {
     const span = document.createElement("span");
     span.className = "letter";
     span.textContent = char;
-    span.style.animationDelay = `${(wIndex * word.length + i) * 0.08}s`;
+
+    // use global index for delay
+    span.style.animationDelay = `${globalIndex * 0.08}s`;
+    globalIndex++;
+
     wordSpan.appendChild(span);
   });
 
   heroHeader.appendChild(wordSpan);
 
-  // add space only if not the last word
   if (wIndex < words.length - 1) {
     heroHeader.appendChild(document.createTextNode(" "));
   }
