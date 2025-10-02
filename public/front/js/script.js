@@ -101,7 +101,7 @@ menu.addEventListener("click", () => {
     dropdown.classList.add("show_dropdown");
     setTimeout(() => {
       dropdown.style.overflow = "visible";
-    }, 300);
+    }, 500);
   }
 });
 const sections = document.querySelectorAll("section");

@@ -97,7 +97,7 @@ body[dir="rtl"] {
     padding-right: 3.25rem;
   }
   nav ul li {
-    font-size: 1.35rem;
+    font-size: 1.35rem !important;
   }
   .hero_intro {
     h1 {
@@ -243,7 +243,6 @@ nav .container {
   margin: auto;
   right: 0;
   height: 0;
-
   z-index: -1;
 }
 
@@ -252,7 +251,7 @@ nav .container {
 }
 #navigation_dropdown .container {
   background-color: var(--offwhite_color);
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4); */
 
   padding-block: 2rem !important;
   justify-content: center;
@@ -274,7 +273,7 @@ nav .logo {
   max-height: 75px;
   scale: 205%;
   padding-left: 2rem;
-  padding-block: 4px;
+  padding-block: 8px;
   object-fit: contain;
 }
 
@@ -290,7 +289,6 @@ nav ul,
 
 nav:not(.floating_nav) {
   li {
-    text-shadow: 0px 0px 2px black;
     img {
       filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
     }
@@ -403,7 +401,7 @@ li#lang {
   overflow: hidden;
 }
 
-@media (min-width: 1800px) {
+@media (min-height: 1024px) {
   .header {
     min-height: 0 !important;
     height: 1000px;
@@ -493,7 +491,7 @@ li#lang {
 }
 
 article.hero_intro {
-  padding-block: 6rem;
+  padding-top: 6rem;
 }
 .hero_intro {
   color: white;
@@ -508,7 +506,7 @@ article.hero_intro {
     font-weight: 500;
     font-family: "Manrope", sans-serif;
 
-    font-size: Clamp(1.8rem, calc(5vw + 2rem), 3.75rem);
+    font-size: Clamp(1.8rem, calc(5vw + 2rem), 3.25rem);
   }
   h3 {
     font-size: 1.5rem;
@@ -517,7 +515,7 @@ article.hero_intro {
     animation: fadeUp 1s 0.75s forwards;
   }
   .LLC {
-    font-size: 2.75rem;
+    font-size: 2.5rem;
   }
 
   .btn {
@@ -687,10 +685,20 @@ section.services {
   }
   h3 {
     font-size: 1.5rem;
+    min-height: 71px;
   }
   p {
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.6);
+  }
+  h3,
+  p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -1140,6 +1148,7 @@ section .container {
 .questions {
   grid-column: span 2;
   display: flex;
+
   flex-direction: column;
   gap: 1.5rem;
 }
@@ -1551,6 +1560,26 @@ footer .container {
 /* MEDIA QURIES */
 
 @media (min-width: 1280px) {
+  nav {
+    justify-content: center;
+    align-items: start;
+  }
+  nav .container {
+    margin: 0;
+    width: fit-content;
+    gap: 4rem;
+  }
+
+  nav .container img ~ ul {
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    transform-origin: left;
+    row-gap: 1rem;
+    li {
+      font-size: 0.9rem;
+    }
+  }
   .hero_intro h3,
   .LLC {
     color: #656565;
