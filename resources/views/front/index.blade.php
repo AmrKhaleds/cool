@@ -144,7 +144,7 @@
         <span class="mask"></span>
         <div class="intro" data-aos="fade-up">
             <div class="special_intro">@lang('front.countries')</div>
-            @lang('front.countries_we_operate_in')
+            @lang('front.where_we_operate')
             <span>@lang('front.providing_trusted_services')</span>
         </div>
         <div class="areas_maps" data-aos="fade-up">

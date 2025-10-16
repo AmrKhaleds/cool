@@ -38,4 +38,5 @@ return [
     'faqs' => 'FAQS',
     'get_more_questions' => 'Got more questions? Send us your enquiry below',
     'get_in_touch' => 'Get In Touch',
+    'where_we_operate' => 'Where We Operate',
 ];

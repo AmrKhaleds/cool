@@ -1,35 +1,3 @@
-const preloadImages = (srcs) => {
-  srcs.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-};
-
-preloadImages(["../media/coloredLogo.png", "../media/coloredLogoWhite.png"]);
-
-const nav = document.querySelector("#navbar");
-const navContainer = document.querySelector("#nav_container");
-const langChanger = document.querySelector("#lang_changer");
-const langChangerList = document.querySelectorAll("#lang_changer span");
-const navLogo = document.querySelector("#navbar .logo");
-const lang = document.querySelector("#lang");
-const activeLang = document.querySelector("#active_lang");
-
-// Scroll effect
-
-// window.addEventListener("scroll", () => {
-//   if (window.scrollY > 125) {
-//     navLogo.src = "../media/coloredLogo.png";
-//     setTimeout(() => {
-//       nav.classList.add("floating_nav");
-//       navContainer.style.padding = "10px 1rem";
-//     }, 200);
-//   } else {
-//     nav.classList.remove("floating_nav");
-//     navContainer.style.padding = "8px 1rem";
-//     navLogo.src = "../media/coloredLogoWhite.png";
-//   }
-// });
 
 lang.addEventListener("click", (e) => {
   e.stopPropagation();

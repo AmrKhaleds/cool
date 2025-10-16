@@ -34,4 +34,5 @@ return [
     'booking' => 'الحجز',
     'schedule_service' => 'احجز خدمتك في بضع نقرات فقط – بسرعة، بسهولة، وبموثوقية.',
     'selet_a_date' => 'اختر التاريخ',
+    'where_we_operate' => 'أين نعمل',
 ];
